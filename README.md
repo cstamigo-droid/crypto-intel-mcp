@@ -34,6 +34,29 @@ Every tool returns **Markdown** (human-readable, default) or **JSON**
 
 ---
 
+## Live demo output (2026-06-15)
+
+```
+crypto_get_quote bitcoin:
+  BTC $66,504.00  +3.4% 24h  · rank #1  · -47% from ATH
+
+crypto_momentum bitcoin:
+  Lean positive  [........|##......] +21/100  · confidence 80%
+  BTC momentum: 24h +3.4% · 7d +4.9% · 30d -14.8%
+
+crypto_trending:
+  ZEC, PENGU, SIREN, TAO, NEAR, BTC, HYPE, GRAM, SUI, H
+
+crypto_analyze bitcoin:
+  Lean positive  [........|###.....] +35/100  · confidence 80%
+  Building momentum → LEAN LONG. In CoinGecko trending (elevated attention).
+  Total crypto market cap +3.6% 24h, BTC dominance 57%.
+```
+
+All values are live from CoinGecko's free public API — no key, no fabrication.
+
+---
+
 ## Quick start
 
 ```bash

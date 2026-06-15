@@ -6,6 +6,11 @@ This is a live network test, not a unit test.
 import sys
 from pathlib import Path
 
+# Make stdout UTF-8 safe so the live demo output (em-dashes, arrows) prints on
+# Windows consoles (cp1252) without crashing. No PYTHONUTF8 env var required.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from dotenv import load_dotenv  # noqa: E402
