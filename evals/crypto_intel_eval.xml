@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  crypto-intel-mcp evaluation suite — 8 read-only Q/A pairs.
+  Structural answers are baked into the code (never drift). Live answers verified
+  against CoinGecko on 2026-06-14 (re-verify if a market fact changes).
+  Run instructions: see evals/README.md
+-->
+<evals>
+
+  <eval id="1">
+    <tool>crypto_get_quote</tool>
+    <question>What market-cap rank does the tool report for Bitcoin?</question>
+    <expected_answer>1</expected_answer>
+    <notes>quote.fetch('bitcoin').data['market_cap_rank'] == 1. Stable (BTC is #1).</notes>
+  </eval>
+
+  <eval id="2">
+    <tool>crypto_get_quote</tool>
+    <question>Does the tool resolve the symbol 'BTC' to the correct coin?</question>
+    <expected_answer>bitcoin</expected_answer>
+    <notes>coingecko.resolve('BTC') == 'bitcoin' via /search. Symbol resolution.</notes>
+  </eval>
+
+  <eval id="3">
+    <tool>crypto_get_quote</tool>
+    <question>How does the tool handle a coin that doesn't exist?</question>
+    <expected_answer>returns "no data" / no coin matches — never a fabricated price</expected_answer>
+    <notes>Graceful degradation: Result.failed, ok=False. Core trust guarantee.</notes>
+  </eval>
+
+  <eval id="4">
+    <tool>crypto_momentum</tool>
+    <question>Which timeframes does the momentum score blend?</question>
+    <expected_answer>24h, 7d, and 30d</expected_answer>
+    <notes>_TIMEFRAMES in momentum.py. Recent action weighted most (0.5 / 0.3 / 0.2).</notes>
+  </eval>
+
+  <eval id="5">
+    <tool>crypto_momentum</tool>
+    <question>What is the maximum confidence the momentum signal reports?</question>
+    <expected_answer>0.8</expected_answer>
+    <notes>confidence = min(0.2 + 0.2*used, 1.0); with all 3 timeframes = 0.8.</notes>
+  </eval>
+
+  <eval id="6">
+    <tool>crypto_analyze</tool>
+    <question>What boost does the composite apply if a coin is in CoinGecko's trending list?</question>
+    <expected_answer>+10 to the score</expected_answer>
+    <notes>analyze.py: score = clamp(score + 10, ...) when is_trending.</notes>
+  </eval>
+
+  <eval id="7">
+    <tool>crypto_analyze</tool>
+    <question>What action does the composite recommend for a score of +50?</question>
+    <expected_answer>RISK-ON (Strong momentum)</expected_answer>
+    <notes>_verdict: score >= 40 -> ("Strong momentum", "RISK-ON").</notes>
+  </eval>
+
+  <eval id="8">
+    <tool>crypto_trending</tool>
+    <question>How many trending coins does the tool list at most?</question>
+    <expected_answer>10</expected_answer>
+    <notes>trending.py slices coins[:10].</notes>
+  </eval>
+
+</evals>
