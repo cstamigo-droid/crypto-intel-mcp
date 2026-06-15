@@ -37,7 +37,7 @@ Every tool returns **Markdown** (human-readable, default) or **JSON**
 ## Quick start
 
 ```bash
-git clone <your-repo-url> crypto-intel-mcp
+git clone https://github.com/cstamigo-droid/crypto-intel-mcp crypto-intel-mcp
 cd crypto-intel-mcp
 python -m venv .venv && .venv\Scripts\activate     # Windows
 pip install -r requirements.txt
