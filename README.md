@@ -1,5 +1,8 @@
 # crypto-intel-mcp
 
+![crypto-intel-mcp - coin analysis demo](docs/demo.png)
+
+
 **Crypto market intelligence for any LLM, over the [Model Context Protocol](https://modelcontextprotocol.io).**
 
 Gives any MCP client (Claude Desktop, Claude Code, agents) clean tools for crypto
