@@ -1,5 +1,7 @@
 # crypto-intel-mcp
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?logo=python&logoColor=white)](https://www.python.org) [![MCP](https://img.shields.io/badge/Model_Context_Protocol-server-7C3AED.svg)](https://modelcontextprotocol.io)
+
 ![crypto-intel-mcp - coin analysis demo](docs/demo.png)
 
 
